@@ -1,8 +1,7 @@
-package com.sbs.common.web.controller;
+package com.sbs.web.controller;
 
-import com.sbs.common.web.bean.TestBean;
+import com.sbs.web.bean.TestBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

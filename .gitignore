@@ -2,3 +2,4 @@
 /**/*.iml
 .idea
 *.log
+/common/logs/2018-04/*.gz

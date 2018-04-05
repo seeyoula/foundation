@@ -4,7 +4,7 @@
         <RollingFile name="DEBUG" fileName="logs/debug.log"
                      filePattern="logs/$${date:yyyy-MM}/debug-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout>
-                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                <Pattern>%t|%d|%-5level|%m|%l%n</Pattern>
             </PatternLayout>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
@@ -12,11 +12,11 @@
             </Policies>
         </RollingFile>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%t|%d|%-5level|%m|%l%n"/>
         </Console>
     </Appenders>
     <Loggers>
-        <logger name="com.sbs" additivity="false">
+        <logger name="com.sbs">
             <AppenderRef ref="DEBUG" />
         </logger>
         <Root level="debug">

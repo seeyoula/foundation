@@ -1,4 +1,4 @@
-package com.sbs.common.web;
+package com.sbs.common.log;
 
 /**
  * Created by Administrator on 2018/4/1.

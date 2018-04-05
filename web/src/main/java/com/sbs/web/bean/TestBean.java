@@ -1,4 +1,4 @@
-package com.sbs.common.web.bean;
+package com.sbs.web.bean;
 
 /**
  * Created by Administrator on 2018/4/1.
