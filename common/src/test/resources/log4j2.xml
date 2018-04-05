@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
+    <Properties>
+        <Property name="baseDir">logs</Property>
+    </Properties>
     <Appenders>
-        <RollingFile name="DEBUG" fileName="logs/debug.log"
-                     filePattern="logs/$${date:yyyy-MM}/debug-%d{MM-dd-yyyy}-%i.log.gz">
+        <RollingFile name="DEBUG" fileName="${baseDir}/debug/debug.log"
+                     filePattern="logs/debug/debug-%i.log">
             <PatternLayout>
                 <Pattern>%t|%d|%-5level|%m|%l%n</Pattern>
             </PatternLayout>
             <Policies>
-                <TimeBasedTriggeringPolicy/>
-                <SizeBasedTriggeringPolicy size="250 MB"/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
             </Policies>
+            <DefaultRolloverStrategy max="10">
+                <Delete basePath="${baseDir}" maxDepth="2">
+                    <IfFileName glob="*/debug-*.log">
+                        <IfLastModified age="30d">
+                            <IfAny>
+                                <IfAccumulatedFileSize exceeds="1 GB"/>
+                                <IfAccumulatedFileCount exceeds="10"/>
+                            </IfAny>
+                        </IfLastModified>
+                    </IfFileName>
+                </Delete>
+            </DefaultRolloverStrategy>
         </RollingFile>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%t|%d|%-5level|%m|%l%n"/>
@@ -17,7 +31,7 @@
     </Appenders>
     <Loggers>
         <logger name="com.sbs">
-            <AppenderRef ref="DEBUG" />
+            <AppenderRef ref="DEBUG"/>
         </logger>
         <Root level="debug">
             <AppenderRef ref="Console"/>

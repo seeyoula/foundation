@@ -6,8 +6,10 @@ import org.apache.logging.log4j.spi.LoggerContext;
 /**
  * Created by Administrator on 2018/4/1.
  */
-public class SecurityLoggerImpl implements ISecurityLogger {
-    protected SecurityLoggerImpl(String name, LoggerContext context) {
+public class SecurityLoggerImpl implements ISecurityLogger
+{
+    protected SecurityLoggerImpl(String name, LoggerContext context)
+    {
 
     }
 }

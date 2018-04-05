@@ -1,12 +1,12 @@
 package com.sbs.common.log;
 
-
 import org.apache.logging.log4j.util.Supplier;
 
 /**
  * Created by Administrator on 2018/4/1.
  */
-public interface IDebugLogger {
+public interface IDebugLogger
+{
     void debug(String message);
 
     void debug(String message, Throwable e);

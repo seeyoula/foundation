@@ -7,7 +7,8 @@ import org.apache.logging.log4j.spi.LoggerContext;
 /**
  * Created by Administrator on 2018/4/3.
  */
-public class RuntimeLoggerFactory extends AbstractLoggerFactory<IRuntimeLgger> {
+public class RuntimeLoggerFactory extends AbstractLoggerFactory<IRuntimeLgger>
+{
 
     /**
      * Creates a new named logger for a given {@link LoggerContext}.
@@ -17,7 +18,8 @@ public class RuntimeLoggerFactory extends AbstractLoggerFactory<IRuntimeLgger> {
      * @return the new named logger
      */
     @Override
-    protected IRuntimeLgger newLogger(String name, LoggerContext context) {
+    protected IRuntimeLgger newLogger(String name, LoggerContext context)
+    {
         return new RuntimeLoggerImpl(name, context);
     }
 }

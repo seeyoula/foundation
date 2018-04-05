@@ -6,30 +6,36 @@ import org.apache.logging.log4j.spi.LoggerContext;
 /**
  * Created by Administrator on 2018/4/3.
  */
-public class DefaultLogger implements ILogger {
+public class DefaultLogger implements ILogger
+{
     private String clazz;
 
-    protected DefaultLogger(String name, LoggerContext context) {
+    protected DefaultLogger(String name, LoggerContext context)
+    {
         this.clazz = name;
     }
 
     @Override
-    public IDebugLogger debug() {
+    public IDebugLogger debug()
+    {
         return LoggerFactory.getDebugLog(clazz);
     }
 
     @Override
-    public IOperateLogger operate() {
+    public IOperateLogger operate()
+    {
         return LoggerFactory.getOperate(clazz);
     }
 
     @Override
-    public IRuntimeLgger runtime() {
+    public IRuntimeLgger runtime()
+    {
         return LoggerFactory.getRuntime(clazz);
     }
 
     @Override
-    public ISecurityLogger security() {
+    public ISecurityLogger security()
+    {
         return LoggerFactory.getSecurity(clazz);
     }
 }

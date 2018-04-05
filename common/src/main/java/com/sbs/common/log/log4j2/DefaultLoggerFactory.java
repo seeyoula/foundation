@@ -7,7 +7,8 @@ import org.apache.logging.log4j.spi.LoggerContext;
 /**
  * Created by Administrator on 2018/4/3.
  */
-public class DefaultLoggerFactory extends AbstractLoggerFactory<ILogger> {
+public class DefaultLoggerFactory extends AbstractLoggerFactory<ILogger>
+{
     /**
      * Creates a new named logger for a given {@link LoggerContext}.
      *
@@ -16,7 +17,8 @@ public class DefaultLoggerFactory extends AbstractLoggerFactory<ILogger> {
      * @return the new named logger
      */
     @Override
-    protected ILogger newLogger(String name, LoggerContext context) {
+    protected ILogger newLogger(String name, LoggerContext context)
+    {
         return new DefaultLogger(name, context);
     }
 }
