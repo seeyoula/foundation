@@ -1,0 +1,28 @@
+package com.qwan.web;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ImportResource;
+
+/**
+ * Created by Administrator on 2018/4/1.
+ */
+@SpringBootApplication
+@ImportResource(locations = {"classpath:META-INF/spring/*.spring.xml"})
+public class SpringBootWebApplication extends SpringBootServletInitializer
+{
+    @Override
+    protected SpringApplicationBuilder configure(
+        SpringApplicationBuilder application)
+    {
+        return application.sources(SpringBootWebApplication.class);
+    }
+
+    public static void main(String[] args)
+        throws Exception
+    {
+        SpringApplication.run(SpringBootWebApplication.class, args);
+    }
+}

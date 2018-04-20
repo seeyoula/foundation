@@ -4,8 +4,33 @@
         <Property name="baseDir">logs</Property>
     </Properties>
     <Appenders>
-        <RollingFile name="DEBUG" fileName="${baseDir}/debug/debug.log"
-                     filePattern="logs/debug/debug-%i.log">
+        <RollingFile name="DEBUG" fileName="${baseDir}/debug/debug.log" filePattern="logs/debug/debug-%i.log"
+                     filePermissions="r--r-----">
+            <PatternLayout>
+                <Pattern>%t|%d|%-5level|%m|%l%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+                <FileMonitorPolicy interval="10"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10">
+                <PosixViewAttribute basePath="${baseDir}" maxDepth="2" filePermissions="r--r-----">
+                    <IfFileName glob="*.log"/>
+                </PosixViewAttribute>
+                <Delete basePath="${baseDir}" maxDepth="2">
+                    <IfFileName glob="*/debug-*.log">
+                        <IfLastModified age="30d">
+                            <IfAny>
+                                <IfAccumulatedFileSize exceeds="1 GB"/>
+                                <IfAccumulatedFileCount exceeds="10"/>
+                            </IfAny>
+                        </IfLastModified>
+                    </IfFileName>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+        <RollingFile name="OPERATE" fileName="${baseDir}/operate/operate.log" filePattern="logs/operate/operate-%i.log"
+                     filePermissions="r--r-----">
             <PatternLayout>
                 <Pattern>%t|%d|%-5level|%m|%l%n</Pattern>
             </PatternLayout>
@@ -13,8 +38,59 @@
                 <SizeBasedTriggeringPolicy size="10 MB"/>
             </Policies>
             <DefaultRolloverStrategy max="10">
+                <PosixViewAttribute basePath="${baseDir}" maxDepth="2" filePermissions="r--r-----">
+                    <IfFileName glob="*.log"/>
+                </PosixViewAttribute>
                 <Delete basePath="${baseDir}" maxDepth="2">
-                    <IfFileName glob="*/debug-*.log">
+                    <IfFileName glob="*/operate-*.log">
+                        <IfLastModified age="30d">
+                            <IfAny>
+                                <IfAccumulatedFileSize exceeds="1 GB"/>
+                                <IfAccumulatedFileCount exceeds="10"/>
+                            </IfAny>
+                        </IfLastModified>
+                    </IfFileName>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+        <RollingFile name="RUNTIME" fileName="${baseDir}/runtime/runtime.log" filePattern="logs/runtime/runtime-%i.log"
+                     filePermissions="r--r-----">
+            <PatternLayout>
+                <Pattern>%t|%d|%-5level|%m|%l%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10">
+                <PosixViewAttribute basePath="${baseDir}" maxDepth="2" filePermissions="r--r-----">
+                    <IfFileName glob="*.log"/>
+                </PosixViewAttribute>
+                <Delete basePath="${baseDir}" maxDepth="2">
+                    <IfFileName glob="*/runtime-*.log">
+                        <IfLastModified age="30d">
+                            <IfAny>
+                                <IfAccumulatedFileSize exceeds="1 GB"/>
+                                <IfAccumulatedFileCount exceeds="10"/>
+                            </IfAny>
+                        </IfLastModified>
+                    </IfFileName>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+        <RollingFile name="SECURITY" fileName="${baseDir}/security/security.log"
+                     filePattern="logs/security/security-%i.log" filePermissions="r--r-----">
+            <PatternLayout>
+                <Pattern>%t|%d|%-5level|%m|%l%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10">
+                <PosixViewAttribute basePath="${baseDir}" maxDepth="2" filePermissions="r--r-----">
+                    <IfFileName glob="*.log"/>
+                </PosixViewAttribute>
+                <Delete basePath="${baseDir}" maxDepth="2">
+                    <IfFileName glob="*/security-*.log">
                         <IfLastModified age="30d">
                             <IfAny>
                                 <IfAccumulatedFileSize exceeds="1 GB"/>
@@ -30,7 +106,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <logger name="com.sbs">
+        <logger name="com.qwan" additivity="false">
             <AppenderRef ref="DEBUG"/>
         </logger>
         <Root level="debug">
