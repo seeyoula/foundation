@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qwan.web.dao.IMenuDAO">
+    <select id="listAll" resultType="Menu">
+        SELECT
+        ID as id,
+        NAME as name,
+        PRIVILEGE_ID as privilegeId,
+        URL as url,
+        PARENT_ID as parentId
+        FROM t_menu
+    </select>
+    <!--<update id="updateUser">-->
+        <!--UPDATE user-->
+        <!--SET NAME = #{user.name}-->
+        <!--WHERE ID = #{user.id}-->
+    <!--</update>-->
+    <insert id="add">
+        INSERT INTO
+        t_menu(id, name, privilege_id, url, parent_id)
+        VALUES (
+          #{menu.id},
+          #{menu.name},
+          #{menu.privilegeId},
+          #{menu.parentId}
+        )
+    </insert>
+    <delete id="delete">
+        DELETE menu WHERE ID = #{id}
+    </delete>
+    <delete id="batchDelete">
+        DELETE user WHERE ID = #{id}
+    </delete>
+</mapper>

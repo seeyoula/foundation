@@ -1,4 +1,5 @@
 package com.qwan.common.log.log4j2.impl;
+
 import com.qwan.common.log.*;
 import org.apache.logging.log4j.spi.LoggerContext;
 

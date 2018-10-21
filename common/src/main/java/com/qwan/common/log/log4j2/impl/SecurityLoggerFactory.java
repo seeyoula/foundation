@@ -1,7 +1,7 @@
 package com.qwan.common.log.log4j2.impl;
 
-import com.qwan.common.log.AbstractLoggerFactory;
 import com.qwan.common.log.ISecurityLogger;
+import com.qwan.common.log.AbstractLoggerFactory;
 import org.apache.logging.log4j.spi.LoggerContext;
 
 /**

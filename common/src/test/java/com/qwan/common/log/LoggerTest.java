@@ -47,18 +47,18 @@ public class LoggerTest {
         DEBUGGER.fatal(() -> "Hello with supplier");
         DEBUGGER.fatal(() -> "Hello with supplier and exception", new RuntimeException("Test Supplier"));
 
-        for (int i = 0; i < 100; i++)
-        {
-            DEBUGGER.debug("xxxxxx");
-            try
-            {
-                Thread.sleep(1000L);
-            }
-            catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-        }
+//        for (int i = 0; i < 100; i++)
+//        {
+//            DEBUGGER.debug("xxxxxx");
+//            try
+//            {
+//                Thread.sleep(1000L);
+//            }
+//            catch (InterruptedException e)
+//            {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.qwan.web;
 
+import com.qwan.foundation.uconfig.UConfigInitializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -14,15 +15,22 @@ import org.springframework.context.annotation.ImportResource;
 public class SpringBootWebApplication extends SpringBootServletInitializer
 {
     @Override
-    protected SpringApplicationBuilder configure(
-        SpringApplicationBuilder application)
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder)
     {
-        return application.sources(SpringBootWebApplication.class);
+        addInitializers(builder);
+        return builder.sources(SpringBootWebApplication.class);
     }
 
     public static void main(String[] args)
         throws Exception
     {
-        SpringApplication.run(SpringBootWebApplication.class, args);
+        SpringApplication application = new SpringApplication(SpringBootWebApplication.class);
+        application.addInitializers();
+        application.run(args);
+    }
+
+    private static void addInitializers(SpringApplicationBuilder builder)
+    {
+        builder.initializers(new UConfigInitializer());
     }
 }
